@@ -1,0 +1,14 @@
+{
+  "name": "vjs-dom-ui",
+  "version": "0.0.1",
+  "description": "A very lightweight Vanilla Javascript UI library.",
+  "license": "ISC",
+  "scripts": {},
+  "keywords": [
+    "Vanilla",
+    "Javascript",
+    "UI",
+    "library",
+    "lightweight"
+  ]
+}

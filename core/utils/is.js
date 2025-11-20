@@ -1,0 +1,1 @@
+export const isTextNode = (something) => something instanceof Text;
