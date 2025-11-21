@@ -1,8 +1,8 @@
 # VJS DOM UI
 
-<div style="display: flex; align-items: center; flex-direction: column; gap: 1rem">
-  <img style="width: 150px; border-radius: 10px" src="./readme/vanilla-js-icon.jpeg">
-  <p>
+<div align="center">
+  <img width="150px" border-radius="10px" src="./readme/vanilla-js-icon.jpeg">
+  <p align="left">
     VJS DOM UI is a vanilla, lightweight and zero dependencies Javascript UI library with custom reactivity for dynamic UI.
   </p>
 </div>
@@ -98,6 +98,15 @@ const listItem = component({
 });
 ```
 By every state change the component that have subscribed and all there children will be re renderd, the new created DOM tree will than replace old DOM tree.
+
+## [Features:](#features)
+**since v0.0.1:**
++ `component` Function, which you can use to create custom components, which you can use to create complex DOM trees.
++ `el` Function, which you can use to create custom HTML elements, which you can use to create components.
++ `state` Function, which you can subscribe from components to add reactivity to subscribed components.
+
+**since v0.0.2:**
++ `batcher` Object that implements auto rendering batching.
 
 ## [Exampels:](#examples)
 All exampels you can find in the `examples` folder.

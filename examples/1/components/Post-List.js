@@ -4,6 +4,7 @@ import PostListItem from "./Post-List-Item.js"
 import PostListSkeleton from "./Post-List-Skeleton.js";
 
 export default component({
+  state: {},
   init: function() {
     this.state.posts = state({ posts: [], isLoading: true, error: null });
     this.state.posts.subscribe(this);

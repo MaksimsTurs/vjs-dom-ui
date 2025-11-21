@@ -1,3 +1,5 @@
+import { isObject, isHTMLElement } from "./utils/is.js";
+
 export default function el(tag) {
   let dom = document.createElement(tag);
   
@@ -25,7 +27,9 @@ export default function el(tag) {
         if(children[index]) {
           if(typeof children[index] === "function") {
             fragment.appendChild(children[index]());
-          } else {
+          } else if(isHTMLElement(children[index])) {
+            fragment.appendChild(children[index]);
+          } else if(isObject(children[index])) {
             fragment.appendChild(children[index].dom());
           }
         }

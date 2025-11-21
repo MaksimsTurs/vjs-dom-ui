@@ -1,6 +1,4 @@
-import domDiff from "./utils/dom-diff.js";
-
-import { __DEV__measureFunctionExecution, __DEV__try } from "./utils/debug.js";
+import batcher from "./batcher.js";
 
 export default function state(initState) {
   const subscribers = [];
@@ -21,15 +19,20 @@ export default function state(initState) {
       } 
     },
     set: function(newState) {
+      batcher.initWhenNotInitialized();      
+      batcher.addState(this);
+
+      let tmp = null;
+
       if(newState !== state) {
         if(typeof newState === "function") {
-          state = newState(state);
+          tmp = newState(state);
         } else {
-          state = newState;
+          tmp = newState;
         }
-
-        this.notify();
       }
+  
+      state = tmp;
     },
     get: function() {
       return state;

@@ -1,6 +1,7 @@
 import { component, el, state } from "../../../core/vjs-dom-ui.js";
 
 export default component({
+  state: {},
   init: function() {
     this.state.isExpanded = state(false);
     this.state.isExpanded.subscribe(this);

@@ -1,9 +1,9 @@
-import STRINGS from "../const/STRINGS.const.js";
-import NUMBERS from "../const/NUMBERS.const.js";
+import STRINGS from "./const/STRINGS.const.js";
+import NUMBERS from "./const/NUMBERS.const.js";
 
-import cloneNodes from "./clone-nodes.js";
+import cloneNodes from "./utils/clone-nodes.js";
 
-export function __DEV__try(callback) {
+function __DEV__try(callback) {
   try {
     callback();
   } catch(error) {
@@ -11,7 +11,7 @@ export function __DEV__try(callback) {
   }
 };
 
-export function __DEV__printDOMTreeStackFrame(frame) {
+function __DEV__printDOMTreeStackFrame(frame) {
   const { 
     oldNodes, 
     newNodes, 
@@ -38,7 +38,7 @@ export function __DEV__printDOMTreeStackFrame(frame) {
   });
 };
 
-export function __DEV__printDOMTreeStack(stack) {
+function __DEV__printDOMTreeStack(stack) {
   for(let index = 0; index < stack.length; index++) {
     const {
       0: oldNodes, 
@@ -62,7 +62,7 @@ export function __DEV__printDOMTreeStack(stack) {
   };
 };
 
-export function __DEV__printDOMTreePatchState(currState) {
+function __DEV__printDOMTreePatchState(currState) {
   for(let name in NUMBERS.PATCH_STATES) {
     if(NUMBERS.PATCH_STATES[name] === currState) {
       console.log(`${STRINGS.DEBUG_PREFIX.PATCH_STATE} ${name}`);
@@ -71,7 +71,7 @@ export function __DEV__printDOMTreePatchState(currState) {
   }
 };
 
-export function __DEV__measureFunctionExecution(name, callback) {
+function __DEV__measureFunctionExecution(name, callback) {
   const now = performance.now();
   const res = callback();
   const yet = performance.now();
@@ -104,6 +104,17 @@ function apply(name, target, thisArg, argArray) {
   return dom;
 };
 
-export function __DEV__measureRenderTime(name, render) {
+function __DEV__measureRenderTime(name, render) {
   return new Proxy(render, { apply: (...args) => apply(name, ...args) });
 };
+
+const __DEBUG__ = {
+  __DEV__try,
+  __DEV__measureFunctionExecution,
+  __DEV__printDOMTreePatchState,
+  __DEV__measureRenderTime,
+  __DEV__printDOMTreeStack,
+  __DEV__printDOMTreeStackFrame
+};
+
+export default __DEBUG__;
