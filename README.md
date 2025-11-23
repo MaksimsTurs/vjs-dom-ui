@@ -11,6 +11,7 @@
 + 🟥 Implement DOM diffing function (yet we simple replacing old dom tree with new dom tree).
 + 🟥 Implement `memo` (for calculation memoization) and `effect` (for side effects) functions.
 + 🟥 Implement lifecycle functions like `onMount`, `onUnmount` and maybe `onUpdate`.
++ 🟥 Persist state of child components.
 + 🟥 Write unit tests.
 + 🟥 Write JSDoc.
 
