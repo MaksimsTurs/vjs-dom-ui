@@ -11,7 +11,8 @@
 + 🟥 Implement DOM diffing function (yet we simple replacing old dom tree with new dom tree).
 + 🟥 Implement `memo` (for calculation memoization) and `effect` (for side effects) functions.
 + 🟥 Implement lifecycle functions like `onMount`, `onUnmount` and maybe `onUpdate`.
-+ 🟥 Persist state of child components.
++ 🟩 Persist state of child components.
++ 🟥 Perform code refactoring.
 + 🟥 Write unit tests.
 + 🟥 Write JSDoc.
 
@@ -66,7 +67,7 @@ mount(document.body, listItem({ text: "Some very very long text..." }));
 You component can have a some state, wich you can change to trigger new `render` function execution. Add `state` to you'r imports. It's important that state must be initialised in `init` function.
 ```js
 const listItem = component({
-  init: function(props) {
+  mount: function(props) {
     this.state = state({ isExpanded: props.isExpanded });
 
     this.state.subscribe(this);
@@ -103,11 +104,16 @@ By every state change the component that have subscribed and all there children 
 ## [Features:](#features)
 **since v0.0.1:**
 + `component` Function, which you can use to create custom components, which you can use to create complex DOM trees.
-+ `el` Function, which you can use to create custom HTML elements, which you can use to create components.
++ `el` Function, which you can use to create a tree of DOM commands that will be executed.
 + `state` Function, which you can subscribe from components to add reactivity to subscribed components.
 
 **since v0.0.2:**
 + `batcher` Object that implements auto rendering batching.
+
+**since v0.0.3:**
++ Child components persist their states when parent component are re - rendered.
++ `el` Function does not create a DOM nodes anymore, yet she create a DOM commands that will be executed 
+  in exec function that will create the DOM tree.
 
 ## [Exampels:](#examples)
 All exampels you can find in the `examples` folder.

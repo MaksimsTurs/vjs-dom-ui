@@ -1,6 +1,7 @@
 import { component, el } from "../../../core/vjs-dom-ui.js";
 
 export default component({
+  name: "Post-List-Skeleton-List",
   render: function() {
     return(
       el("ul")
@@ -11,6 +12,7 @@ export default component({
 });
 
 const PostListItemSkeleton = component({
+  name: "Post-List-Skeleton-Item",
   render: function() {
     return(
       el("li")

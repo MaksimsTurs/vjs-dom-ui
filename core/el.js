@@ -1,56 +1,42 @@
+import { COMPONENTS, STATES } from "./component.js";
 import { isObject, isHTMLElement } from "./utils/is.js";
 
+export const COMMANDS = {
+  ROOT:     0,
+  TEXT:     1,
+  ATTR:     2,
+  EVENT:    3,
+  CHILDREN: 4
+}
+
 export default function el(tag) {
-  let dom = document.createElement(tag);
-  
-  const events = {};
+  const commands = [[COMMANDS.ROOT, tag]];
 
   return {
     text: function(text) {
-      dom.textContent = text;
+      commands.push([COMMANDS.TEXT, text]);
 
       return this;
     },
     attr: function(attrs) {
-      for(let key in attrs) {
-        if(attrs[key] !== undefined && attrs[key] !== null) {
-          dom.setAttribute(key, attrs[key]);
-        }
-      }
+      commands.push([COMMANDS.ATTR, attrs]);
 
       return this;
     },
     children: function(...children) {
-      const fragment = document.createDocumentFragment()
-
-      for(let index = 0; index < children.length; index++) {
-        if(children[index]) {
-          if(typeof children[index] === "function") {
-            fragment.appendChild(children[index]());
-          } else if(isHTMLElement(children[index])) {
-            fragment.appendChild(children[index]);
-          } else if(isObject(children[index])) {
-            fragment.appendChild(children[index].dom());
-          }
-        }
-      }
-
-      dom.appendChild(fragment);
+      commands.push([COMMANDS.CHILDREN, children]);
 
       return this;
     },
     on: function(event, callback) {
-      events[event] = callback;
-      dom.addEventListener(event, callback);
+      commands.push([COMMANDS.EVENT, event, callback]);
 
       return this;
     },
     dom: function() {
+      return commands
+
       return dom;
-    },
-    destroy: function() {
-      dom.parentElement.removeChild(dom);
-      dom = null;
     },
   };
 };

@@ -1,8 +1,9 @@
 import { component, el, state } from "../../../core/vjs-dom-ui.js";
 
 export default component({
+  name: "Post-List-Item",
   state: {},
-  init: function() {
+  mount: function() {
     this.state.isExpanded = state(false);
     this.state.isExpanded.subscribe(this);
   },
