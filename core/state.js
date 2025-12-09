@@ -1,6 +1,8 @@
 import batcher from "./batcher.js";
-import { COMPONENTS, STATES } from "./component.js";
-import { exec } from "./mount.js";
+
+import componentsIntances from "./utils/components-instances.js";
+import componentsInProgress from "./utils/components-in-progress.js";
+import { execDOMCommands } from "./utils/exec-dom-commands.js";
 
 export default function state(initState) {
   const subscribers = new Map();
@@ -8,9 +10,6 @@ export default function state(initState) {
   let state = initState;
 
   return {
-    $$subscribers: function() {
-      return subscribers;
-    },
     subscribe: function(component) {
       const key = subscribers.size + 1;
 
@@ -20,20 +19,19 @@ export default function state(initState) {
     },
     notify: function() {
       subscribers.forEach(subscriber => {
-        COMPONENTS.push(subscriber);
-        const commands = subscriber.render().dom();
-        const newDom = exec(commands);
+        componentsInProgress.push(subscriber);
+        const commands = subscriber.render()._commands();
+        const newDom = execDOMCommands(commands);
         
         newDom.setAttribute("vjs-type", subscriber.name);
         
-        STATES.delete(subscriber.dom);
-        STATES.set(newDom, subscriber);
+        componentsIntances.swap(subscriber.dom, newDom, subscriber);
         
         subscriber.dom.replaceWith(newDom)
         subscriber.domTraversal.setRoot(newDom);
   
         subscriber.dom = newDom;
-        COMPONENTS.pop();
+        componentsInProgress.pop();
       });
     },
     set: function(newState) {

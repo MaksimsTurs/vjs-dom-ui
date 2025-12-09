@@ -1,22 +1,22 @@
-import { component, el, state } from "../../../core/vjs-dom-ui.js";
+import { defineComponent, el, state } from "../../../core/vjs-dom-ui.js";
 
 import PostListItem from "./Post-List-Item.js"
 import PostListSkeleton from "./Post-List-Skeleton.js";
 
-export default component({
+export default defineComponent({
   name: "Post-List",
   state: {},
-  mount: function() {
+  init: function() {
     this.state.posts = state({ posts: [], isLoading: true, error: null });
     this.state.posts.subscribe(this);
 
     this.state.isClicked = state(false);
     this.state.isClicked.subscribe(this);
 
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then(data => data.json())
-      .then(data => this.state.posts.set({ posts: data.slice(0, 3), isLoading: false, error: null }))
-      .catch(error => this.state.posts.set({ posts: [], isLoading: false, error }));
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //   .then(data => data.json())
+    //   .then(data => this.state.posts.set({ posts: data.slice(0, 1), isLoading: false, error: null }))
+    //   .catch(error => this.state.posts.set({ posts: [], isLoading: false, error }));
   },
   render: function() {
     const click = () => {
@@ -24,28 +24,29 @@ export default component({
     };
 
     return(
-      this.state.posts.get().isLoading ?
+      false ?
         PostListSkeleton() :
         el("ul")
           .attr({ class: "posts-list" })
           .children(
-            el("div")
-            .children(
-                Item({ text: ~~(Math.random() * 10) }),
-                ...this.state.posts.get().posts.map(post => PostListItem(post)),
-                el("button").text(`Clicked? ${this.state.isClicked.get()}`).on("click", click)
-              )
+            Item({ text: ~~(Math.random() * 90) }),
+            ...this.state.posts.get().posts.map(post => PostListItem(post)),
+            el("button").text(`Clicked? ${this.state.isClicked.get()}`).event("click", click)
           )
     );
   }
 });
 
-const Item = component({
+const Item = defineComponent({
   name: "Item",
   state: {},
-  mount: function (){
+  init: function () {
     this.state.isClicked = state(false);
     this.state.isClicked.subscribe(this);
   },
-  render: (props) => el("li").text(props.text)
+  render: (props) => {
+    return(
+      el("li").text(props.text)
+    )
+  }
 });

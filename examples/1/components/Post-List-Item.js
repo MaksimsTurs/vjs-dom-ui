@@ -1,9 +1,9 @@
-import { component, el, state } from "../../../core/vjs-dom-ui.js";
+import { defineComponent, el, state } from "../../../core/vjs-dom-ui.js";
 
-export default component({
+export default defineComponent({
   name: "Post-List-Item",
   state: {},
-  mount: function() {
+  init: function() {
     this.state.isExpanded = state(false);
     this.state.isExpanded.subscribe(this);
   },
@@ -36,7 +36,7 @@ export default component({
               el("button")
                 .attr({ class: "posts-list-item-expander" })
                 .text(buttonLabel)
-                .on("click", hiddeContent),
+                .event("click", hiddeContent),
             )
         )   
     );

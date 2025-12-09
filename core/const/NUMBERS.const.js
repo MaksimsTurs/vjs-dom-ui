@@ -1,4 +1,8 @@
 export default {
+  OBJECT_TYPES: {
+    DOM_COMMANDS: 0,
+    COMPONENT:    1
+  },
   PATCH_STATES: {
     CHECK_NEXT_PATCH_STATE: 0,
     CHANGE_ATTRIBUTES:      1,
@@ -13,5 +17,12 @@ export default {
   INDEX_TYPES: {
     OLD_NODES: 2,
     NEW_NODES: 3
+  },
+  DOM_COMMANDS: {
+    CREATE_ELEMENT: 0,
+    SET_TEXT:       1,
+    SET_ATTR:       2,
+    ADD_EVENT:      3,
+    APPEND_CHILD:   4 
   }
 };

@@ -1,42 +1,37 @@
-import { COMPONENTS, STATES } from "./component.js";
-import { isObject, isHTMLElement } from "./utils/is.js";
-
-export const COMMANDS = {
-  ROOT:     0,
-  TEXT:     1,
-  ATTR:     2,
-  EVENT:    3,
-  CHILDREN: 4
-}
+import NUMBERS from "./const/NUMBERS.const.js";
 
 export default function el(tag) {
-  const commands = [[COMMANDS.ROOT, tag]];
-
+  let commands = [[NUMBERS.DOM_COMMANDS.CREATE_ELEMENT, tag]];
+  
   return {
+    // API
     text: function(text) {
-      commands.push([COMMANDS.TEXT, text]);
-
+      commands.push([NUMBERS.DOM_COMMANDS.SET_TEXT, text]);
+    
       return this;
     },
     attr: function(attrs) {
-      commands.push([COMMANDS.ATTR, attrs]);
-
+      commands.push([NUMBERS.DOM_COMMANDS.SET_ATTR, attrs]);
+    
       return this;
     },
     children: function(...children) {
-      commands.push([COMMANDS.CHILDREN, children]);
-
+      commands.push([NUMBERS.DOM_COMMANDS.APPEND_CHILD, children]);
+    
       return this;
     },
-    on: function(event, callback) {
-      commands.push([COMMANDS.EVENT, event, callback]);
-
+    event: function(event, callback) {
+      commands.push([NUMBERS.DOM_COMMANDS.ADD_EVENT, event, callback]);
+    
       return this;
     },
-    dom: function() {
-      return commands
-
-      return dom;
+    // Should not be used or overriden from user.
+    _type: NUMBERS.OBJECT_TYPES.DOM_COMMANDS,
+    _commands: function() {
+      return commands;
     },
+    _clear: function() {
+      commands = null;
+    }
   };
 };

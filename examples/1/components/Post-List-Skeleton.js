@@ -1,6 +1,6 @@
-import { component, el } from "../../../core/vjs-dom-ui.js";
+import { defineComponent, el } from "../../../core/vjs-dom-ui.js";
 
-export default component({
+export default defineComponent({
   name: "Post-List-Skeleton-List",
   render: function() {
     return(
@@ -11,7 +11,7 @@ export default component({
   }
 });
 
-const PostListItemSkeleton = component({
+const PostListItemSkeleton = defineComponent({
   name: "Post-List-Skeleton-Item",
   render: function() {
     return(
