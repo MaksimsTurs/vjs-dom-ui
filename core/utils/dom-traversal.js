@@ -1,4 +1,4 @@
-export default class DOMTraversal {
+export default class DomTraversal {
   #stack = null;
 
   constructor() {

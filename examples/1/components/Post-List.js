@@ -29,7 +29,7 @@ export default defineComponent({
         el("ul")
           .attr({ class: "posts-list" })
           .children(
-            Item({ text: ~~(Math.random() * 90) }),
+            Button({ text: ~~(Math.random() * 90) }),
             ...this.state.posts.get().posts.map(post => PostListItem(post)),
             el("button").text(`Clicked? ${this.state.isClicked.get()}`).event("click", click)
           )
@@ -37,16 +37,20 @@ export default defineComponent({
   }
 });
 
-const Item = defineComponent({
-  name: "Item",
+const Button = defineComponent({
+  name: "Button",
   state: {},
   init: function () {
     this.state.isClicked = state(false);
     this.state.isClicked.subscribe(this);
   },
-  render: (props) => {
+  render: function(props) {
+    const click = () => {
+      this.state.isClicked.set(prev => !prev);
+    };
+
     return(
-      el("li").text(props.text)
+      el("button").event("click", click).text(this.state.isClicked.get())
     )
   }
 });

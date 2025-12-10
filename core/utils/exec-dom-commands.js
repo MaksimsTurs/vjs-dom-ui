@@ -1,12 +1,14 @@
 import NUMBERS from "../const/NUMBERS.const.js";
 
 import { isHTMLElement, isObject } from "./is.js";
-import componentsInProgress from "./components-in-progress.js";
-import componentsInstances from "./components-instances.js";
-import readNewNode from "./read-new-node.js";
+import { getComponentInstance } from "./component-instances-map.js";
+import { getCurrentComponentInstance } from "./component-render-stack.js";
+import initComponent from "./init-component.js";
+import renderComponent from "./render-component.js";
+import reRenderComponent from "./re-render-component.js";
 
-export function execDOMCommands(commands) {
-  const parent = componentsInProgress.last();
+export default function execDOMCommands(commands) {
+  const parent = getCurrentComponentInstance();
   const domTraversal = parent.domTraversal;
 
   const newNode = document.createElement(commands[0][1]);
@@ -36,44 +38,30 @@ export function execDOMCommands(commands) {
           
           if(isHTMLElement(children)) {
             fragment.appendChild(children);
-          } else if(children?.type === NUMBERS.OBJECT_TYPES.COMPONENT) {  
+          } else if(children?._type === NUMBERS.OBJECT_TYPES.COMPONENT) {  
             const currentChildren = domTraversal.getCurrentChildren();
-            const componentInstance = componentsInstances.get(currentChildren);
-            
-            if(currentChildren?.getAttribute("vjs-type") !== children.name) {
-              // Create new componet
-              children.create();
-              children.init();
-  
-              componentsInProgress.push(children.instance());
-              const el = children.render();
-              el.setAttribute("vjs-type", children.name);
-              componentsInstances.set(el, children.instance());
-              children.instance().domTraversal.setRoot(el);
-              componentsInProgress.pop();
+            const cachedComponent = getComponentInstance(currentChildren);
 
-              fragment.appendChild(el);
+            if(currentChildren?.getAttribute("vjs-type") !== children.name) {
+              // Create new component
+              initComponent(children);
+              renderComponent(children);
+
+              fragment.appendChild(children.dom);
               domTraversal.incrementIndex();
             } else {
-              const prevProps = componentInstance.props;
+              // Re bind the render function and re render the component or
+              // use cached dom.
+              const prevProps = cachedComponent.props;
               const newProps = children.props;
 
               if(prevProps !== newProps) {
-                componentsInProgress.push(componentInstance);
-                componentInstance.props = children.props;
-                componentInstance.render = componentInstance.renderBase.bind(componentInstance, children.props);
+                reRenderComponent(cachedComponent, children, false);
                 
-                const el = readNewNode(componentInstance.render());
-                
-                el.setAttribute("vjs-type", children.name);
-                componentsInstances.swap(componentInstance.dom, el, componentInstance);
-                componentInstance.domTraversal.setRoot(el);
-                componentsInProgress.pop();
-                
-                fragment.appendChild(el);
+                fragment.appendChild(cachedComponent.dom);
                 domTraversal.incrementIndex();
               } else {
-                fragment.appendChild(componentInstance.dom);
+                fragment.appendChild(cachedComponent.dom);
               }
             }
           } else if(isObject(children)) {
