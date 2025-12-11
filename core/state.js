@@ -1,6 +1,6 @@
 import batcher from "./batcher.js";
 
-import reRenderComponent from "./utils/re-render-component.js";
+import reRenderComponentInstance from "./utils/re-render-component-instance.js";
 
 export default function state(initState) {
   const subscribers = new Map();
@@ -16,9 +16,7 @@ export default function state(initState) {
       return () => subscribers.delete(key);
     },
     notify: function() {
-      subscribers.forEach(subscriber => {
-        reRenderComponent(subscriber, null, true);
-      });
+      subscribers.forEach(subscriber => reRenderComponentInstance(subscriber, null, true));
     },
     set: function(newState) {
       batcher.initWhenNotInitialized();      

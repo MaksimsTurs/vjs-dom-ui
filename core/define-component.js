@@ -13,13 +13,11 @@ export default function defineComponent(baseComponent) {
 
   return function(props) {
     return {
-      _type:  NUMBERS.OBJECT_TYPES.COMPONENT,      
+      _type:  NUMBERS.OBJECT_TYPES.COMPONENT,
       name:   baseComponent.name,
       render: baseComponent.render,
       init:   baseComponent?.init,
-      state:  {},
       props:  props,
-      dom:    null,     
     };
   };
 };

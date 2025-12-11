@@ -3,11 +3,11 @@ import NUMBERS from "../const/NUMBERS.const.js";
 import { isHTMLElement, isObject } from "./is.js";
 import { getComponentInstance } from "./component-instances-map.js";
 import { getCurrentComponentInstance } from "./component-render-stack.js";
-import initComponent from "./init-component.js";
-import renderComponent from "./render-component.js";
-import reRenderComponent from "./re-render-component.js";
+import createComponentInstance from "./create-component-instance.js";
+import renderComponentInstance from "./render-component-instance.js";
+import reRenderComponentInstance from "./re-render-component-instance.js";
 
-export default function execDOMCommands(commands) {
+export default function execDomCommands(commands) {
   const parent = getCurrentComponentInstance();
   const domTraversal = parent.domTraversal;
 
@@ -44,10 +44,10 @@ export default function execDOMCommands(commands) {
 
             if(currentChildren?.getAttribute("vjs-type") !== children.name) {
               // Create new component
-              initComponent(children);
-              renderComponent(children);
+              const newComponentInstance = createComponentInstance(children);
+              const newComponentInstanceDom = renderComponentInstance(newComponentInstance);
 
-              fragment.appendChild(children.dom);
+              fragment.appendChild(newComponentInstanceDom);
               domTraversal.incrementIndex();
             } else {
               // Re bind the render function and re render the component or
@@ -56,16 +56,16 @@ export default function execDOMCommands(commands) {
               const newProps = children.props;
 
               if(prevProps !== newProps) {
-                reRenderComponent(cachedComponent, children, false);
+                const componentInstanceNewDom = reRenderComponentInstance(cachedComponent, children, false);
                 
-                fragment.appendChild(cachedComponent.dom);
+                fragment.appendChild(componentInstanceNewDom);
                 domTraversal.incrementIndex();
               } else {
                 fragment.appendChild(cachedComponent.dom);
               }
             }
           } else if(isObject(children)) {
-            const el = execDOMCommands(children._commands());
+            const el = execDomCommands(children._commands());
             
             fragment.appendChild(el);
             domTraversal.incrementIndex();

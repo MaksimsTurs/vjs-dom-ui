@@ -12,7 +12,7 @@
 + 🟥 Implement `memo` (for calculation memoization) and `effect` (for side effects) functions.
 + 🟥 Implement lifecycle functions like `onMount`, `onUnmount` and maybe `onUpdate`.
 + 🟩 Persist state of child components.
-+ 🟥 Perform code refactoring.
++ 🟩 Perform code refactoring.
 + 🟥 Write unit tests.
 + 🟥 Write JSDoc.
 

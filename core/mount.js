@@ -1,9 +1,6 @@
-import initComponent from "./utils/init-component.js";
-import renderComponent from "./utils/render-component.js";
+import createComponentInstance from "./utils/create-component-instance.js";
+import renderComponentInstance from "./utils/render-component-instance.js";
 
-export default function mount(parent, component) {
-  initComponent(component);
-  renderComponent(component);
-  
-  parent.appendChild(component.dom);
+export default function mount(parent, componentInfo) {
+  parent.appendChild(renderComponentInstance(createComponentInstance(componentInfo)));
 };
