@@ -23,6 +23,7 @@ export default {
     SET_TEXT:       1,
     SET_ATTR:       2,
     ADD_EVENT:      3,
-    APPEND_CHILD:   4 
+    SET_STYLE:      4,
+    APPEND_CHILD:   5 
   }
 };

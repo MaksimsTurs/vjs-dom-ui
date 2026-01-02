@@ -21,9 +21,10 @@ First import the `component` and `el` functions, with the `component` function y
 ```js
 import { component, el } from "vjs-dom-ui.js";
 ```
-Every component must have a `render` function, who you describe the DOM tree.
+Every component must have a `render` function, who you describe the DOM tree and `name` attribute, this will be used to preserve the state of child components.
 ```js
 const listItem = component({
+  name: "list-item",
   render: function(props) {
     const click = () => {
       // Do some stuff by clicking...
@@ -31,16 +32,16 @@ const listItem = component({
 
     return(
       el("li")
-        .attr("class", "container")
+        .attr({ class: "container" })
         .children(
           el("div")
-            .attr("class", "container-head")
+            .attr({ class: "container-head" })
             .children(
               el("p").text("Some head text")
-              el("button").on("click", click).text("X")
+              el("button").event("click", click).text("X")
             ),
           el("div")
-            .attr("class", "container-content")
+            .attr({ class: "container-content" })
             .children(
               el("p").text(props.text)
             )
@@ -53,7 +54,8 @@ Other components can be used as parameters for `children` function.
 ```js
 return(
   el("li")
-    .attr("class", "container")
+    .style({ padding: "0.5rem" })
+    .attr({ class: "container" })
     .children(
       listHead(),
       listContent(props.text)
@@ -67,7 +69,8 @@ mount(document.body, listItem({ text: "Some very very long text..." }));
 You component can have a some state, wich you can change to trigger new `render` function execution. Add `state` to you'r imports. It's important that state must be initialised in `init` function.
 ```js
 const listItem = component({
-  mount: function(props) {
+  name: "list-item",
+  init: function(props) {
     this.state = state({ isExpanded: props.isExpanded });
 
     this.state.subscribe(this);
@@ -81,16 +84,16 @@ const listItem = component({
 
     return(
       el("li")
-        .attr("class", "container")
+        .attr({ class: "container" })
         .children(
           el("div")
-            .attr("class", "container-head")
+            .attr({ class: "container-head" })
             .children(
               el("p").text("Some head text")
-              el("button").on("click", click).text("X")
+              el("button").event("click", click).text("X")
             ),
           el("div")
-            .attr("class", contentClassName)
+            .attr({ class: contentClassName })
             .children(
               el("p").text(props.text)
             )
@@ -115,5 +118,10 @@ By every state change the component that have subscribed and all there children 
 + `el` Function does not create a DOM nodes anymore, yet she create a DOM commands that will be executed 
   in exec function that will create the DOM tree.
 
+**since v0.0.7**
++ Added support for `svg`, `path`, `line`, etc.
++ Added support for document `fragment`, but component can not return a fragment!
+
 ## [Exampels:](#examples)
-All exampels you can find in the `examples` folder.
+[Example Nr. 1](./examples/1/) Simple example of list of items, with loader and local states.\
+[Example Nr. 2](./examples/2/) Simple example of a Website with movies, with some search functionality and reusable components.

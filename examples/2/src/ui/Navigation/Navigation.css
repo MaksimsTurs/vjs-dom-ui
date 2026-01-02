@@ -1,0 +1,57 @@
+.header-nav_list {
+  display: flex;
+  width: fit-content;
+  overflow: hidden;
+  align-items: center;
+  color: rgb(30, 50, 50);
+  background-color: rgba(95, 158, 160, 0.4);
+  border-radius: 20px;
+  box-shadow: 
+    3px 4px 4px rgba(30, 50, 50, 0.4),
+    -3px 4px 4px rgba(30, 50, 50, 0.4);
+  position: relative;
+  z-index: 0;
+}
+
+.header-nav_hover-effect {
+  content: "";
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 5rem;
+  height: 100%;
+  z-index: -1;
+  background-color: rgba(30, 50, 50, 0.2);
+  transition: all 0.2s ease;
+}
+
+.header-nav_list > li:nth-child(1):hover ~ .header-nav_hover-effect {
+  left: 0 !important;
+}
+
+.header-nav_list > li:nth-child(2):hover ~ .header-nav_hover-effect {
+  left: 5rem !important;
+}
+
+.header-nav_list > li:nth-child(3):hover ~ .header-nav_hover-effect {
+  left: 10rem !important;
+}
+
+.header-nav_list > li:nth-child(4):hover ~ .header-nav_hover-effect {
+  left: 15rem !important;
+}
+
+.header-nav_list > li > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  width: 5rem;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.header-nav_list > a:nth-child(4) > p {
+  font-size: 0.9rem;
+}

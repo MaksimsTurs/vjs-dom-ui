@@ -1,0 +1,5 @@
+@import url(./src/css/header.css);
+
+@import url(./src/ui/Navigation/Navigation.css);
+@import url(./src/ui/Movie-Card/Movie-Card.css);
+@import url(./src/ui/Movie-List/Movie-List.css);

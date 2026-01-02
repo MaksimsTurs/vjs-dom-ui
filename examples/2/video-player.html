@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="player.css">
+  <link rel="stylesheet" href="src/css/fonts.css">
+  <link rel="stylesheet" href="src/css/reset.css">
+  <title>Kino:Player</title>
+</head>
+<body>
+  <header class="header-container">
+    <section class="header-website_title">
+      <svg 
+        width="45" 
+        height="45" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke="currentColor" 
+        stroke-width="3" 
+        stroke-linecap="round" 
+        stroke-linejoin="round">
+        <path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"/>
+      </svg>
+      <h1>Kino</h1>
+    </section>
+    <nav class="header-nav_container"></nav>
+  </header>
+  <main>
+    <div class="video-player_container">
+      <div class="video-player">
+        <video id="video" autoplay>
+          <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"/>
+        </video>
+        <section class="video-player_controlls">
+          <div class="video-player_controlls-state">
+            <button id="video-player_pause-button" style="display: flex;">
+              <svg
+                width="24"
+                height="24"
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                viewBox="0 0 24 24">
+                <rect width="5" height="18" x="14" y="3" rx="1"/>
+                <rect width="5" height="18" x="5" y="3" rx="1"/>
+              </svg>
+            </button>
+            <button id="video-player_play-button" style="display: none;">
+              <svg
+                width="24"
+                height="24"
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                viewBox="0 0 24 24">
+                <path d="M5 5a2 2 0 0 1 3-2l12 7a2 2 0 0 1 0 4L8 21a2 2 0 0 1-3-2z"/>
+              </svg>
+            </button>
+            <button id="video-player_unfullscreen-button" style="display: none;">
+              <svg 
+                width="24"
+                height="24"
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                viewBox="0 0 24 24">
+                <path d="m14 10 7-7m-1 7h-6V4M3 21l7-7m-6 0h6v6"/>
+              </svg>
+            </button>
+            <button id="video-player_fullscreen-button">
+              <svg 
+                width="24"
+                height="24"
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                viewBox="0 0 24 24">
+                <path d="m15 15 6 6M15 9l6-6m0 13v5h-5m5-13V3h-5M3 16v5h5m-5 0 6-6M3 8V3h5m1 6L3 3"/>
+              </svg>
+            </button>
+            <button id="video-player_volume-button">
+              <svg 
+                width="24"
+                height="24"
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                viewBox="0 0 24 24">
+                <path d="m11 5-1-1-4 4H3L2 9v6l1 1h3l4 4 1-1zm5 4a5 5 0 0 1 0 6m3 3a9 9 0 0 0 0-12"/>
+              </svg>
+            </button>
+            <button id="video-player_mute-button" style="display: none;">
+              <svg 
+                width="24"
+                height="24"
+                fill="none" 
+                stroke="currentColor" 
+                stroke-linecap="round" 
+                stroke-linejoin="round" 
+                stroke-width="2" 
+                viewBox="0 0 24 24">
+                <path d="m11 5-1-1-4 4H3L2 9v6l1 1h3l4 4 1-1zm11 4-6 6m0-6 6 6"/>
+              </svg>          
+            </button>
+          </div>
+          <div class="video-player_controlls-time">
+            <p id="video-player_controlls-ctime-hour">00</p>
+            <p>:</p>
+            <p id="video-player_controlls-ctime-min">00</p>
+            <p>:</p>
+            <p id="video-player_controlls-ctime-sec">00</p>
+          </div>
+          <div class="video-player_time-container">
+            <div class="video-player_time-front"></div>
+            <div class="video-player_time-back"></div>
+          </div>
+          <div class="video-player_controlls-time">
+            <p id="video-player_controlls-ftime-hour">00</p>
+            <p>:</p>
+            <p id="video-player_controlls-ftime-min">00</p>
+            <p>:</p>
+            <p id="video-player_controlls-ftime-sec">00</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="./video-player.js"></script>
+</body>
+</html>

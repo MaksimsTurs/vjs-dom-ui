@@ -12,8 +12,12 @@ export default function reRenderComponentInstance(cachedComponent, newComponent,
 
   const dom = getDom(cachedComponent.render());
 
-  dom.setAttribute("vjs-type", cachedComponent.name);
+  if(dom.nodeType === document.DOCUMENT_FRAGMENT_NODE) {
+    throw new Error(`Component ${newComponent.name} returns a fragment but must return a HTML Element!`);
+  }
 
+  dom.setAttribute("vjs-type", cachedComponent.name);
+  
   swapComponentInstanceKeys(cachedComponent.dom, dom, cachedComponent);
 
   if(replaceDom) {

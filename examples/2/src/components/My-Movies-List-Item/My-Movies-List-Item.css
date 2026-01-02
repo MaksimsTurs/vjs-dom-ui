@@ -1,0 +1,62 @@
+.mymovies-item_container {
+  display: flex;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(30, 50, 50, 0.4);
+}
+
+.mymovies-item_container > img {
+  height: 12.5rem;
+}
+
+.mymovies-item_container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mymovies-item_container > div > div > p:nth-child(1) {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  }
+
+.mymovies-item_container > div > div > p:nth-child(2) {
+  display: -webkit-box;
+  line-clamp: 6;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.mymovies-actions_list {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mymovies-item_container > div > div > button:nth-child(1) {
+  padding: 0.5rem 2rem;
+  border-radius: 15px;
+  color: white;
+  transition: all 0.2s ease;
+  background-color: rgb(100, 0, 0);
+}
+
+.mymovies-item_container > div > div > button:nth-child(1):hover {
+  transition: all 0.2s ease;
+  background-color: rgb(80, 0, 0);
+}
+
+.mymovies-item_container > div > div > button:nth-child(2) {
+  padding: 0.5rem 2rem;
+  border-radius: 15px;
+  color: white;
+  transition: all 0.2s ease;
+  background-color: rgb(0, 100, 100);
+}
+
+.mymovies-item_container > div > div > button:nth-child(2):hover {
+  transition: all 0.2s ease;
+  background-color: rgb(0, 80, 100);
+}

@@ -1,0 +1,28 @@
+@import url(./src/css/header.css);
+
+@import url(./src/ui/Navigation/Navigation.css);
+@import url(./src/ui/Movie-Card/Movie-Card.css);
+@import url(./src/ui/Movie-List/Movie-List.css);
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-input_container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.search-input_container > input[type="text"] {
+  width: 10rem;
+  border: 1px solid rgba(30, 50, 50, 0.4);
+  padding: 0.5rem 1rem;
+}
+
+.search-input_container > input[type="text"]:focus {
+  outline: none;
+  border: 1px solid rgba(30, 50, 50, 1);
+  box-shadow: 1px 1px 1px rgba(30, 50, 50, 0.4);
+}

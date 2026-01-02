@@ -8,7 +8,7 @@ export default defineComponent({
   state: {},
   init: function() {
     this.state.posts = state({ posts: [], isLoading: true, error: null });
-    this.state.posts.subscribe(this);
+    this.state.posts.subscribe(this)
 
     this.state.isClicked = state(false);
     this.state.isClicked.subscribe(this);

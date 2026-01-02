@@ -24,7 +24,7 @@ export default class DomTraversal {
       const nodes = this.#stack.at(-1)[0];
       const index = this.#stack.at(-1)[2];
 
-      if(nodes.length) {
+      if(nodes.length && nodes[index]) {
         this.#stack.push(this.#createFrame(nodes[index].childNodes));
       }  
     }

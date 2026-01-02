@@ -1,0 +1,55 @@
+.empty-list_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 0.5rem;
+  height: 100%;
+  font-size: 1.2rem;
+  color: rgb(171, 171, 171);
+}
+
+.empty-list_movie-card {
+  width: 9.5rem;
+  height: 15rem;
+  border-radius: 10px;
+  background-color: rgb(200, 200, 200);
+}
+
+.empty-list_movie-card:nth-child(1) {
+  position: absolute;
+  z-index: 2;
+  background-color: rgb(200, 200, 200);
+}
+
+.empty-list_movie-card:nth-child(2) {
+  position: absolute;
+  z-index: 1;
+  transform: translate(10px, 10px);
+  background-color: rgb(175, 175, 175);
+}
+
+.empty-list_movie-card:nth-child(3) {
+  position: absolute;
+  z-index: 0;
+  transform: translate(20px, 20px);
+  background-color: rgb(150, 150, 150);
+}
+
+.empty-list_container > a {
+  margin-top: 21rem;
+  margin-left: 2rem;
+  font-size: 0.9rem;
+  color: rgba(30, 50, 50, 0.4);
+  border: 2px solid rgba(30, 50, 50, 0.4);
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  transition: all 0.2s ease;
+}
+
+.empty-list_container > a:hover {
+  transition: all 0.2s ease;
+  color: rgba(30, 50, 50, 0.9);
+  border: 2px solid rgba(30, 50, 50, 0.9);
+}

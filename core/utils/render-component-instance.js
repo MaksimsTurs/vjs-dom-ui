@@ -4,19 +4,27 @@ import { setComponentInstance } from "./component-instances-map.js";
 import getDom from "./get-dom.js";
 
 export default function renderComponentInstance(componentInstance) {
-  componentInstance.init?.();
+  if(componentInstance) {
+    componentInstance.init?.();
+  
+    pushComponentInstance(componentInstance);
+  
+    const dom = getDom(componentInstance.render());
 
-  pushComponentInstance(componentInstance);
+    if(dom.nodeType === document.DOCUMENT_FRAGMENT_NODE) {
+      throw new Error(`Component ${componentInstance.name} returns a fragment but must return a HTML Element!`);
+    }
+    
+    dom.setAttribute("vjs-type", componentInstance.name);
+  
+    componentInstance.dom = dom;
+    componentInstance.domTraversal.setRoot(dom);
+    setComponentInstance(dom, componentInstance);
+  
+    popComponentInstance();
+  
+    return dom;
+  }
 
-  const dom = getDom(componentInstance.render());
-
-  dom.setAttribute("vjs-type", componentInstance.name);
-
-  componentInstance.dom = dom;
-  componentInstance.domTraversal.setRoot(dom);
-  setComponentInstance(dom, componentInstance);
-
-  popComponentInstance();
-
-  return dom;
+  return undefined;
 };
