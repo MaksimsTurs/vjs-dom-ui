@@ -1,0 +1,66 @@
+.mymovies-item_container {
+  gap: var(--gap-xs);
+  padding: var(--padding-s);
+  border: 1px solid var(--color-dark-green-hight-transparent);
+  box-shadow: 4px 4px 2px 2px var(--color-dark-green-hight-transparent);
+  height: calc(var(--size-xxxxl) * 5.5);
+  display: flex;
+}
+
+.mymovies-item_thumbnail {
+  height: 100%
+}
+
+.mymovies-item_data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mymovies-item_name {
+  font-size: calc(var(--font-xxxxl) * 1.25);
+  margin-bottom: var(--margin-s);
+  color: var(--color-dark-green-no-transparent);
+  font-weight: bold;
+
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.mymovies-item_description {
+  color: rgb(75, 75, 75);
+  display: -webkit-box;
+  line-clamp: 5;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.mymovies-actions {
+  gap: var(--gap-xs);
+  display: flex;
+}
+
+.mymovies-actions > button {
+  padding: var(--padding-s);
+  background-color: var(--color-dark-green-no-transparent);
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.mymovies-actions > button:hover {
+  background-color: var(--color-dark-green-no-transparent);
+}
+
+.mymovies-actions_add:hover {
+  transition: all 0.2s ease;
+  background-color: rgba(90, 40, 255, 1) !important;
+}
+
+.mymovies-actions_remove:hover {
+  transition: all 0.2s ease;
+  background-color: rgba(90, 40, 40, 1) !important;
+}

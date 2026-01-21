@@ -1,0 +1,32 @@
+.text-input_container {
+  display: flex;
+  justify-content: center;
+}
+
+.text-input_container > input {
+  border: 1px solid var(--color-dark-green-hight-transparent);
+  padding: var(--padding-s) var(--padding-l);
+  transition: all 0.2s ease;
+}
+
+.text-input_container > input::placeholder {
+  color: var(--color-dark-green-hight-transparent);
+  opacity: 1;
+  transition: all 0.2s ease;
+}
+
+.text-input_container > input:focus::placeholder,
+.text-input_container > input:hover::placeholder {
+  color: var(--color-dark-green-no-transparent);
+  transition: all 0.2s ease;
+}
+
+.text-input_container > input:focus,
+.text-input_container > input:hover {
+  border: 1px solid var(--color-dark-green-no-transparent);
+  transition: all 0.2s ease;
+}
+
+.text-input_container > input:focus {
+  box-shadow: 1px 2px 2px var(--color-dark-green-middle-transparent);
+}

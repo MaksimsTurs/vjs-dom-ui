@@ -1,0 +1,9 @@
+@import url(./src/css/variables.css);
+@import url(./src/css/header.css);
+@import url(./src/css/reset.css);
+
+@import url(./src/ui/Text-Input/Text-Input.css);
+@import url(./src/ui/Empty-List/Empty-List.css);
+@import url(./src/ui/Navigation/Navigation.css);
+@import url(./src/ui/Movie-Card/Movie-Card.css);
+@import url(./src/ui/Movie-List/Movie-List.css);

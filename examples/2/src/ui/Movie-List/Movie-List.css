@@ -1,0 +1,6 @@
+.movie-list {
+  padding: var(--padding-l) calc(var(--padding-xxxxl) * 2.5);
+  gap: var(--gap-l);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+}

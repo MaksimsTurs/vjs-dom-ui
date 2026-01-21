@@ -1,0 +1,83 @@
+.movie-card_container {
+  box-shadow: 5px 5px 6px 1px var(--color-dark-green-middle-transparent);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.movie-card_thumbnail {
+  width: 100%;
+  height: 100%;
+}
+
+.movie-card_actions {
+  padding: var(--margin-s);
+  gap: var(--gap-xs);
+  display: flex;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  z-index: 1;
+}
+
+.movie-card_actions > button {
+  padding: var(--padding-s);
+  background-color: var(--color-dark-green-middle-transparent);
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.movie-card_actions > button:hover {
+  background-color: var(--color-dark-green-no-transparent);
+}
+
+.movie-card_actions-add:hover {
+  transition: all 0.2s ease;
+  background-color: rgba(90, 40, 255, 1) !important;
+}
+
+.movie-card_actions-remove:hover {
+  transition: all 0.2s ease;
+  background-color: rgba(90, 40, 40, 1) !important;
+}
+
+.movie-card_data {
+  cursor: auto;
+  padding: var(--padding-m);
+  width: calc(100% - calc(var(--padding-m) * 2));
+  height: calc(100% - calc(var(--padding-m) * 2));
+  background-color: var(--color-black-middle-transparent);
+  flex-direction: column;
+  justify-content: space-between;
+  display: flex;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  backdrop-filter: blur(5px);
+  color: #ffffff;
+  opacity: 0;
+  transition: all 0.2s ease;
+}
+
+.movie-card_data-name {
+  margin-bottom: var(--margin-xs);
+  font-size: var(--font-xxxl);
+  font-family: "Roboto Bold";
+}
+
+.movie-card_data-description {
+  display: -webkit-box;
+  line-clamp: 7;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+.movie-card_container:hover > .movie-card_data {
+  opacity: 1;
+}
+
+.movie-card_container:hover {
+  transform: scale(1.04);
+}

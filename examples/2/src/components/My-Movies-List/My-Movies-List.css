@@ -1,0 +1,6 @@
+.mymovies_list {
+  gap: var(--gap-s);
+  padding: var(--padding-l) calc(var(--padding-xxxxl) * 2.5);
+  display: flex;
+  flex-direction: column;
+}

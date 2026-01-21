@@ -1,0 +1,12 @@
+.header-container {
+  padding: var(--padding-l) var(--padding-xxxxl);
+  background-color: var(--color-green-hight-transparent);
+  margin-bottom: var(--margin-l);
+  display: flex;
+  align-items: center;
+}
+
+.header-nav_container {
+  flex-grow: 1;
+  justify-items: center;
+}

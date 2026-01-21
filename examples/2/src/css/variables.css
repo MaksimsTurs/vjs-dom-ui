@@ -1,0 +1,61 @@
+:root {
+  --color-green-hight-transparent:       #64a0a04d;
+  --color-dark-green-hight-transparent:  #1e32324d;
+  --color-dark-green-middle-transparent: #1e323280;
+  --color-dark-green-no-transparent:     #1e3232;
+	--color-black-middle-transparent:      #00000080;
+
+	--size-xs:    0.9rem;
+	--size-s:     1.15rem;
+	--size-m:     1.4rem;
+	--size-l:     1.65rem;
+	--size-xl:    1.9rem;
+	--size-xxl:   2.15rem;
+	--size-xxxl:  2.4rem;
+	--size-xxxxl: 2.65rem;
+
+	--gap-xs:    0.5rem;
+	--gap-s:     0.65rem;
+	--gap-m:     0.8rem;
+	--gap-l:     0.95rem;
+	--gap-xl:    1.15rem;
+	--gap-xxl:   1.3rem;
+	--gap-xxxl:  1.45rem;
+	--gap-xxxxl: 1.6rem;
+
+	--padding-xs:    0.25rem;
+	--padding-s:     0.5rem;
+	--padding-m:     0.75rem;
+	--padding-l:     1rem;
+	--padding-xl:    1.25rem;
+	--padding-xxl:   1.5rem;
+	--padding-xxxl:  1.75rem;
+	--padding-xxxxl: 2rem;
+
+	--margin-xs:    0.25rem;
+	--margin-s:     0.5rem;
+	--margin-m:     0.75rem;
+	--margin-l:     1rem;
+	--margin-xl:    1.25rem;
+	--margin-xxl:   1.5rem;
+	--margin-xxxl:  1.75rem;
+	--margin-xxxxl: 2rem;
+
+	--font-xs:    0.5rem;
+	--font-s:     0.65rem;
+	--font-m:     0.8rem;
+	--font-l:     0.95rem;
+	--font-xl:    1.15rem;
+	--font-xxl:   1.3rem;
+	--font-xxxl:  1.45rem;
+	--font-xxxxl: 1.6rem;
+
+	--border-radius-xs:    5px;
+	--border-radius-s:     6px;
+	--border-radius-m:     7px;
+	--border-radius-l:     8px;
+	--border-radius-xl:    9px;
+	--border-radius-xxl:   10px;
+	--border-radius-xxxl:  11px;
+	--border-radius-xxxxl: 12px;
+}
